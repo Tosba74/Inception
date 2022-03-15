@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: container_mariadb
+    build: ./requirements/mariadb/
+    networks:
+      - 42inception
+    ports:
+      - 3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    env_file:
+      - .env
+networks:
+  42inception:
+    driver: bridge
+volumes:
+  dbdata:
+    name: dbdata
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${MARIADB_HOST_VOLUME_PATH}
