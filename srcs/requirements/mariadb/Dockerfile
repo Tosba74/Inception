@@ -1,21 +1,18 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/15 17:33:10 by bmangin           #+#    #+#              #
-#    Updated: 2022/03/15 17:56:11 by bmangin          ###   ########lyon.fr    #
-#                                                                              #
-# **************************************************************************** #
-
 FROM debian:buster
+ 
+LABEL	maintenaire="bmangin@student.42lyon.fr"
 
-LABEL	maintainer ${MAIL42}
-
-RUN		apt-get update && apt-get upgrade -y && apt-get install -y vim git wget curl zsh
-RUN		apt-get install -y mariadb-server
-
-EXPOSE	3306
-
+WORKDIR /
+ 
+COPY ./tools/setup.sh .
+COPY ./tools/50-server.cnf .
+ 
+RUN apt-get update && apt-get upgrade -y && apt-get install -y apt-utils mariadb-server php-mysql
+RUN rm -rf /etc/mysql/mariadb.conf.d/50-server.cnf && ln -s /50-server.cnf /etc/mysql/mariadb.conf.d/
+RUN	chown -R www-data /var/lib/mysql/
+ 
+VOLUME ["dbdata:/var/lib/mysql/"]
+ 
+EXPOSE 3306
+ 
+CMD [bash, setup.sh]
