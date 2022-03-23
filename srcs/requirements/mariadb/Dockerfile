@@ -17,4 +17,4 @@ VOLUME ["dbdata:/var/lib/mysql/"]
  
 EXPOSE 3306
  
-ENTRYPOINT [bash, setup.sh]
+ENTRYPOINT ["bash", "setup.sh"]
