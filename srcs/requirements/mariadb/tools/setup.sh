@@ -9,5 +9,4 @@ if [ ! -d "/var/lib/mysql/wordpress" ]; then
 	mysql -e "FLUSH PRIVILEGES;"
     service mysql stop 
 fi
-#sleep 5
-mysql
+mysqld_safe
