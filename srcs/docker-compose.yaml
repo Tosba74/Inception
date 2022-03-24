@@ -3,6 +3,8 @@ services:
   mariadb: 
     container_name: mariadb_container
     build: ./requirements/mariadb/
+    ports:
+      - 3306:3306
     networks:
       - 42incept
     env_file: .env
@@ -12,6 +14,8 @@ services:
   wordpress: 
     container_name: wordpress_container
     build: ./requirements/wordpress/
+    ports:
+      - 9000:9000
     networks:
       - 42incept
     env_file: .env

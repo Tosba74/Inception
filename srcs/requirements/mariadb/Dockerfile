@@ -1,6 +1,6 @@
 FROM debian:buster
  
-LABEL	maintenaire="bmangin@student.42lyon.fr"
+LABEL	maintainer="bmangin@student.42lyon.fr"
 
 WORKDIR /
  
@@ -13,8 +13,8 @@ COPY ./tools/50-server.cnf .
  
 ENV	WP_DATABASE=wordpress MYSQL_USER=bmangin MYSQL_PASSWORD=bmangin42
 
-VOLUME ["dbdata:/var/lib/mysql/"]
+#VOLUME ["dbdata:/var/lib/mysql/"]
  
-EXPOSE 3306
+#EXPOSE 3306
  
 ENTRYPOINT ["bash", "setup.sh"]

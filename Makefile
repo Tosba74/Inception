@@ -11,9 +11,9 @@ clean:
 	${CD} ${PATH_S} && docker volume ${RM} dbdata
 	${CD} ${PATH_S} && docker volume ${RM} wpdata
 
-fclean:
-	docker system prune -f
+fclean: clean
 	docker rmi -f ${shell docker images -a -q}
+	docker system prune -f
 
 re: clean all
 
