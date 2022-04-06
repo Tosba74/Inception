@@ -21,7 +21,7 @@ services:
     env_file: .env
     restart: always
     volumes:
-      - wpdata:/var/www
+      - wpdata:/var/www/wordpress/
     depends_on:
       - mariadb
   nginx: 
@@ -34,7 +34,7 @@ services:
     env_file: .env
     restart: always
     volumes:
-      - wpdata:/var/log/nginx
+      - wpdata:/var/www/wordpress/
     depends_on:
       - wordpress
 networks:
