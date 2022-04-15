@@ -7,9 +7,9 @@ COMPOSE := ${CD} ${PATH_S} && docker-compose -p ${NAME}
 all: .up
 
 folders:
-	sudo mkdir -p ${HOME}/data
-	sudo mkdir -p ${HOME}/data/dbdata
-	sudo mkdir -p ${HOME}/data/wpdata
+	sudo mkdir -p /User/bmangin/data
+	sudo mkdir -p /User/bmangin/data/dbdata
+	sudo mkdir -p /User/bmangin/data/wpdata
 
 .up:	folders
 	${COMPOSE} up -d --build

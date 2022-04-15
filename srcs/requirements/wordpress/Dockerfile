@@ -17,6 +17,5 @@ RUN chown -R  www-data:www-data /var/www/wordpress/
 RUN chmod 777 /var/www/wordpress/
 RUN mkdir -p /run/php/
 COPY tools/setup.sh /
-RUN chmod 777 /setup.sh
 WORKDIR /var/www/wordpress
 ENTRYPOINT ["sh", "/setup.sh"]
