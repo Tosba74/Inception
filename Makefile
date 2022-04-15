@@ -7,9 +7,9 @@ COMPOSE := ${CD} ${PATH_S} && docker-compose -p ${NAME}
 all: .up
 
 folders:
-	sudo mkdir -p /User/bmangin/data
-	sudo mkdir -p /User/bmangin/data/dbdata
-	sudo mkdir -p /User/bmangin/data/wpdata
+	mkdir -p /home/bmangin/data
+	mkdir -p /home/bmangin/data/dbdata
+	mkdir -p /home/bmangin/data/wpdata
 
 .up:	folders
 	${COMPOSE} up -d --build
@@ -25,7 +25,7 @@ clean:
 
 fclean:
 	${COMPOSE} down -v
-	sudo rm -rf ${HOME}/data
+	sudo rm -rf /home/bmangin/data
 
 prune:	fclean
 	docker system prune --volumes --force --all
